@@ -93,14 +93,18 @@ namespace LinFu.Finders
         /// </summary>
         /// <typeparam name="TItem">The type of item being compared.</typeparam>
         /// <param name="list">The fuzzy list that contains the list of possible matches.</param>
+        /// <param name="tolerance">The tolerance level that determines the minimum percentage for a valid match (ranges between 0.0 and 1.0)</param>
         /// <returns>The item with the highest match.</returns>
-        public static IFuzzyItem<TItem> BestMatch<TItem>(this IList<IFuzzyItem<TItem>> list)
+        public static IFuzzyItem<TItem> BestMatch<TItem>(this IList<IFuzzyItem<TItem>> list, double tolerance)
         {
+            if (tolerance < 0 || tolerance > 1)
+                throw new ArgumentOutOfRangeException("tolerance");
+
             double bestScore = 0;
             IFuzzyItem<TItem> bestMatch = null;
             foreach (var item in list)
             {
-                if (item.Confidence <= bestScore)
+                if (item.Confidence <= bestScore || item.Confidence < tolerance)
                     continue;
 
                 bestMatch = item;
@@ -108,6 +112,18 @@ namespace LinFu.Finders
             }
 
             return bestMatch;
+        }
+
+        /// <summary>
+        /// Returns the FuzzyItem with the highest confidence score in a given
+        /// <see cref="IFuzzyItem{T}"/> list.
+        /// </summary>
+        /// <typeparam name="TItem">The type of item being compared.</typeparam>
+        /// <param name="list">The fuzzy list that contains the list of possible matches.</param>
+        /// <returns>The item with the highest match.</returns>
+        public static IFuzzyItem<TItem> BestMatch<TItem>(this IList<IFuzzyItem<TItem>> list)
+        {
+            return BestMatch(list, .51);
         }
         
         /// <summary>
