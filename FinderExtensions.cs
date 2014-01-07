@@ -115,6 +115,22 @@ namespace LinFu.Finders
         }
 
         /// <summary>
+        /// Returns the FuzzyItems with the minimum tolerance score in a given
+        /// <see cref="IFuzzyItem{T}"/> list.
+        /// </summary>
+        /// <typeparam name="TItem">The type of item being compared.</typeparam>
+        /// <param name="list">The fuzzy list that contains the list of possible matches.</param>
+        /// <param name="tolerance">The tolerance level that determines the minimum percentage for a valid match (ranges between 0.0 and 1.0)</param>
+        /// <returns>The items that match the tolerance threshold</returns>
+        public static IEnumerable<IFuzzyItem<TItem>> BestMatches<TItem>(this IList<IFuzzyItem<TItem>> list, double tolerance = 1)
+        {
+            if (tolerance < 0 || tolerance > 1)
+                throw new ArgumentOutOfRangeException("tolerance");
+
+            return list.Where(item => item.Confidence >= tolerance);
+        }
+
+        /// <summary>
         /// Returns the FuzzyItem with the highest confidence score in a given
         /// <see cref="IFuzzyItem{T}"/> list.
         /// </summary>
