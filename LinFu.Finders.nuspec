@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>LinFu.Finders</id>
+    <version>1.0</version>
+    <title>LinFu.Finders</title>
+    <authors>Philip Laureano</authors>
+    <owners>Philip Laureano</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A library that adds weighted searches to LINQ collections.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014 Philip Laureano</copyright>
+    <tags>LinFu fuzzy-search search linq</tags>
+  </metadata>
+</package>
