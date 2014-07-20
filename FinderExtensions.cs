@@ -18,7 +18,7 @@ namespace LinFu.Finders
         /// <typeparam name="TItem">The type of item to test.</typeparam>
         /// <param name="list">The list of <see cref="IFuzzyItem{T}"/> instances that represent a single test case in a fuzzy search.</param>
         /// <param name="criteria">The criteria to test against each item in the list.</param>
-        public static void AddCriteria<TItem>(this IList<IFuzzyItem<TItem>> list, ICriteria<TItem> criteria)
+        public static void AddCriteria<TItem>(this IEnumerable<IFuzzyItem<TItem>> list, ICriteria<TItem> criteria)
         {
             foreach (var item in list)
             {
@@ -35,7 +35,7 @@ namespace LinFu.Finders
         /// <typeparam name="TItem">The type of item to test.</typeparam>
         /// <param name="list">The list of <see cref="IFuzzyItem{T}"/> instances that represent a single test case in a fuzzy search.</param>
         /// <param name="predicate">The condition that will be used to test the target item.</param>        
-        public static void AddCriteria<TItem>(this IList<IFuzzyItem<TItem>> list, Func<TItem, bool> predicate)
+        public static void AddCriteria<TItem>(this IEnumerable<IFuzzyItem<TItem>> list, Func<TItem, bool> predicate)
         {
             list.AddCriteria(predicate, CriteriaType.Standard);
         }
@@ -48,7 +48,7 @@ namespace LinFu.Finders
         /// <param name="list">The list of <see cref="IFuzzyItem{T}"/> instances that represent a single test case in a fuzzy search.</param>
         /// <param name="predicate">The condition that will be used to test the target item.</param>        
         /// <param name="criteriaType">The <see cref="CriteriaType"/> to associate with the predicate.</param>        
-        public static void AddCriteria<TItem>(this IList<IFuzzyItem<TItem>> list, Func<TItem, bool> predicate,
+        public static void AddCriteria<TItem>(this IEnumerable<IFuzzyItem<TItem>> list, Func<TItem, bool> predicate,
             CriteriaType criteriaType)
         {
             const int defaultWeight = 1;
@@ -64,7 +64,7 @@ namespace LinFu.Finders
         /// <param name="predicate">The condition that will be used to test the target item.</param>        
         /// <param name="criteriaType">The <see cref="CriteriaType"/> to associate with the predicate.</param>        
         /// <param name="weight">The weight of the predicate value expressed in the number of tests that will be counted for/against the target item as a result of the predicate.</param>
-        public static void AddCriteria<TItem>(this IList<IFuzzyItem<TItem>> list, Func<TItem, bool> predicate, CriteriaType criteriaType, int weight)
+        public static void AddCriteria<TItem>(this IEnumerable<IFuzzyItem<TItem>> list, Func<TItem, bool> predicate, CriteriaType criteriaType, int weight)
         {
             var criteria = new Criteria<TItem>()
                                {
@@ -95,7 +95,7 @@ namespace LinFu.Finders
         /// <param name="list">The fuzzy list that contains the list of possible matches.</param>
         /// <param name="tolerance">The tolerance level that determines the minimum percentage for a valid match (ranges between 0.0 and 1.0)</param>
         /// <returns>The item with the highest match.</returns>
-        public static IFuzzyItem<TItem> BestMatch<TItem>(this IList<IFuzzyItem<TItem>> list, double tolerance)
+        public static IFuzzyItem<TItem> BestMatch<TItem>(this IEnumerable<IFuzzyItem<TItem>> list, double tolerance)
         {
             if (tolerance < 0 || tolerance > 1)
                 throw new ArgumentOutOfRangeException("tolerance");
@@ -122,7 +122,7 @@ namespace LinFu.Finders
         /// <param name="list">The fuzzy list that contains the list of possible matches.</param>
         /// <param name="tolerance">The tolerance level that determines the minimum percentage for a valid match (ranges between 0.0 and 1.0)</param>
         /// <returns>The items that match the tolerance threshold</returns>
-        public static IEnumerable<IFuzzyItem<TItem>> BestMatches<TItem>(this IList<IFuzzyItem<TItem>> list, double tolerance = 1)
+        public static IEnumerable<IFuzzyItem<TItem>> BestMatches<TItem>(this IEnumerable<IFuzzyItem<TItem>> list, double tolerance = 1)
         {
             if (tolerance < 0 || tolerance > 1)
                 throw new ArgumentOutOfRangeException("tolerance");
@@ -137,7 +137,7 @@ namespace LinFu.Finders
         /// <typeparam name="TItem">The type of item being compared.</typeparam>
         /// <param name="list">The fuzzy list that contains the list of possible matches.</param>
         /// <returns>The item with the highest match.</returns>
-        public static IFuzzyItem<TItem> BestMatch<TItem>(this IList<IFuzzyItem<TItem>> list)
+        public static IFuzzyItem<TItem> BestMatch<TItem>(this IEnumerable<IFuzzyItem<TItem>> list)
         {
             return BestMatch(list, .51);
         }
@@ -147,7 +147,7 @@ namespace LinFu.Finders
         /// </summary>
         /// <typeparam name="TItem">The target item type.</typeparam>
         /// <param name="list">The fuzzy list itself.</param>
-        public static void Reset<TItem>(this IList<IFuzzyItem<TItem>> list)
+        public static void Reset<TItem>(this IEnumerable<IFuzzyItem<TItem>> list)
         {
             foreach(var item in list)
             {
