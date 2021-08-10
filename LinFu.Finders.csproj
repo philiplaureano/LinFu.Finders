@@ -1,19 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>LinFu.Finders.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>false</DelaySign>
-    <generateassemblyconfigurationattribute>false</generateassemblyconfigurationattribute>
-    <generateassemblydescriptionattribute>false</generateassemblydescriptionattribute>
-    <generateassemblyproductattribute>false</generateassemblyproductattribute>
-    <generateassemblytitleattribute>false</generateassemblytitleattribute>
-    <generateassemblycompanyattribute>false</generateassemblycompanyattribute>
-    <generateassemblyfileversionattribute>false</generateassemblyfileversionattribute>
-    <generateassemblyinformationalversionattribute>false</generateassemblyinformationalversionattribute>
-    <generateassemblyversionattribute>false</generateassemblyversionattribute>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Laureano.LinFu.Finders</PackageId>
+    <Title>LinFu.Finders</Title>
+    <Authors>Philip Laureano</Authors>
+    <Description>A library that adds weighted searches to LINQ collections.</Description>
+    <Copyright>Copyright (C) Philip Laureano 2021</Copyright>
+    <PackageProjectUrl>https://github.com/philiplaureano/LinFu.Finders</PackageProjectUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/philiplaureano/LinFu.Finders</RepositoryUrl>
+    <PackageTags>plugins</PackageTags>
+    <Product>Laureano.LinFu.Finders</Product>
+    <Version>1.1.2</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
   </PropertyGroup>
-
-
 </Project>
