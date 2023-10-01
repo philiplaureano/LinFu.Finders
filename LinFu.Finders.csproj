@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Laureano.LinFu.Finders</PackageId>
     <Title>LinFu.Finders</Title>
     <Authors>Philip Laureano</Authors>
     <Description>A library that adds weighted searches to LINQ collections.</Description>
-    <Copyright>Copyright (C) Philip Laureano 2021</Copyright>
+    <Copyright>Copyright (C) Philip Laureano 2023</Copyright>
     <PackageProjectUrl>https://github.com/philiplaureano/LinFu.Finders</PackageProjectUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/philiplaureano/LinFu.Finders</RepositoryUrl>
@@ -14,6 +13,7 @@
     <Version>1.1.2</Version>
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Properties" />
